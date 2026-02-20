@@ -8,6 +8,9 @@ const app = express();
 
 app.use(express.json());
 
+import authRotes from "./routes/authRoutes.js";
+app.use("/api/auth", authRotes);
+
 //Mongo DB connection
 mongoose.connect(process.env.MONGO_URL)
     .then(() => console.log("MongoDB Connected"))
