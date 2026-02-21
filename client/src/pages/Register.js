@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 import "../UI/Register.css";
 
 function Register(){
@@ -55,7 +56,7 @@ function Register(){
 
                 <form onSubmit={handleSubmit}>
                     <div className="input-group">
-                        <label>Full Name</label>
+                        <label>User Name</label>
                         <input
                             type="text"
                             name="username"
