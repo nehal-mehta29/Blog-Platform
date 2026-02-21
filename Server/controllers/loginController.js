@@ -1,6 +1,6 @@
-const User = require("../Schema/User");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+import User from "../Schema/User.js"
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 export const loginUser = async(req, res) => {
     try{
