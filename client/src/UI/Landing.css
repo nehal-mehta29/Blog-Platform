@@ -1,0 +1,93 @@
+/* Importing the same clean, rounded font for consistency */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Matching the Beige Gradient from the Register page */
+.landing-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f5f5dc 0%, #e3d5ca 50%, #d4a373 100%);
+    text-align: center;
+    padding: 20px;
+}
+
+/* Elegant Heading */
+.landing-container h1 {
+    font-size: 3rem;
+    color: #432818; /* Deep chocolate brown */
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+    font-weight: 700;
+    /* Soft text shadow to make it feel premium */
+    text-shadow: 0 2px 10px rgba(67, 40, 24, 0.1);
+}
+
+/* Button Group Layout */
+.landing-button {
+    display: flex;
+    gap: 20px;
+}
+
+/* Base Button Styling */
+.landing-button button {
+    padding: 16px 40px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 50px; /* Fully rounded "pill" buttons */
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+}
+
+/* Login Button: The "Outline" style to look lighter */
+.landing-button button:first-child {
+    background-color: transparent;
+    border: 2px solid #432818;
+    color: #432818;
+}
+
+.landing-button button:first-child:hover {
+    background-color: #432818;
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(67, 40, 24, 0.15);
+}
+
+/* Register Button: The "Solid" style to grab attention */
+.landing-button button:last-child {
+    background-color: #432818;
+    color: #ffffff;
+    box-shadow: 0 8px 15px rgba(67, 40, 24, 0.2);
+}
+
+.landing-button button:last-child:hover {
+    background-color: #603808;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(67, 40, 24, 0.3);
+}
+
+/* Micro-interaction when clicking */
+.landing-button button:active {
+    transform: translateY(0);
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 480px) {
+    .landing-container h1 {
+        font-size: 2rem;
+    }
+    .landing-button {
+        flex-direction: column;
+        width: 100%;
+        max-width: 250px;
+    }
+}
