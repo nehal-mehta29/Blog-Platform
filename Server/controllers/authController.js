@@ -7,13 +7,28 @@ export const registerUser = async(req, res) => {
 
         //Checking the required fields
         if (!username || !email || !password){
-            return res.status(400).json({message: "All fields are required"});
+            return res.status(400).json({
+                success: false,
+                message: "All fields are required"
+            });
         }
 
         //Checking if the user exists
         const existingUser = await User.findOne({username});
         if (existingUser){
-            return res.status(400).json({message: "Username already exists"});
+            return res.status(400).json({
+                success: false,
+                message: "Username already exists"
+            });
+        }
+
+        // Check duplicate email
+        const existingEmail = await User.findOne({ email });
+        if (existingEmail) {
+            return res.status(400).json({
+                success: false,
+                message: "Email already registered"
+          });
         }
 
         //Hash password
@@ -26,10 +41,16 @@ export const registerUser = async(req, res) => {
             password: hashedPassword
         });
 
-        res.status(201).json({message : "User registered successfully !!"});
+        res.status(201).json({
+            success: true,
+            message : "User registered successfully !!"
+        });
     }
 
     catch(error){
-        res.status(500).json({message : "Server error"});
+        res.status(500).json({
+            success: false,
+            message : "Server error"
+        });
     }
 }

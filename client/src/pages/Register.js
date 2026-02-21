@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import {useNavigate} from "react-router-dom";
 import "../UI/Register.css";
 
 function Register(){
+    const navigate = useNavigate();
+
     const [user, setUser] = useState({
-        name: "",
+        username: "",
         email: "",
         password: ""
     })
@@ -15,9 +18,34 @@ function Register(){
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(user);
+        
+        try{
+            const response = await fetch("/api/auth/register",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(user)
+            })
+
+            const data = await response.json();
+
+            if (response.status === 201){
+                alert("Registered Successfully !!");
+                navigate("/");
+            }
+
+            else{
+                alert(data.message);
+            }
+        }
+
+        catch(error){
+            console.error(error);
+            alert("Server error !!");
+        }
     }
 
     return(
@@ -30,9 +58,8 @@ function Register(){
                         <label>Full Name</label>
                         <input
                             type="text"
-                            name="name"
-                            placeholder="Enter your full name"
-                            value={user.name}
+                            name="username"
+                            placeholder="Enter your username"
                             onChange={handleChange}
                             required
                         />
@@ -44,7 +71,6 @@ function Register(){
                         type="email"
                         name="email"
                         placeholder="Enter your email"
-                        value={user.email}
                         onChange={handleChange}
                         required
                       />
@@ -56,7 +82,6 @@ function Register(){
                         type="password"
                         name="password"
                         placeholder="Enter password"
-                        value={user.password}
                         onChange={handleChange}
                         required
                       />
