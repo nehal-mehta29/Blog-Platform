@@ -5,20 +5,30 @@ export const registerUser = async(req, res) => {
     try{
         const{username, email, password} = req.body;
 
+        let errors = {};
+
         //Checking the required fields
-        if (!username || !email || !password){
-            return res.status(400).json({
-                success: false,
-                message: "All fields are required"
-            });
+        if (!username || username.trim() === "") {
+            errors.username = "Username is required";
+        }
+
+        if (!email || email.trim() === "") {
+            errors.email = "Email is required";
+        }
+
+        if (!password) {
+            errors.password = "Password is required";
+        } 
+        
+        else if (password.length < 8) {
+            errors.password = "Password must be at least 8 characters";
         }
 
         //Checking if the user exists
         const existingUser = await User.findOne({username});
         if (existingUser){
             return res.status(400).json({
-                success: false,
-                message: "Username already exists"
+                username: "Username already exists"
             });
         }
 
@@ -26,16 +36,8 @@ export const registerUser = async(req, res) => {
         const existingEmail = await User.findOne({ email });
         if (existingEmail) {
             return res.status(400).json({
-                success: false,
-                message: "Email already registered"
+                email: "Email already registered"
           });
-        }
-
-        //Checking if the password is atleast 8 characters long
-        if (!password || password.length < 8) {
-            return res.status(400).json({
-                message: "Password must be at least 8 characters long"
-            });
         }
 
         //Hash password

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import "../UI/Login.css"
+import { toast } from "react-toastify";
 
 function Login(){
     const navigate = useNavigate();
@@ -9,6 +10,8 @@ function Login(){
         identifier: "",
         password: ""
     })
+
+    const [errors, setErrors] = useState({});
 
     const handleChange = (e) => {
         setUser({
@@ -19,6 +22,7 @@ function Login(){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrors({}) //Clears old errors
 
         try{
             const response = await fetch("/api/auth/login",{
@@ -32,18 +36,23 @@ function Login(){
             const data = await response.json();
 
             if (response.ok){
-                alert("Login Successfully !!");
+                toast.success("Login Successfully !!");
                 localStorage.setItem("token", data.token);
                 navigate("/home");
             }
+
+            else if(response.status === 400){
+                 setErrors(data);
+            }
+
             else{
-                alert(data.message);
+                toast.error(data.message || "Something went wrong");
             }
         }
 
         catch(error){
             console.error(error);
-            alert("Server error");
+            toast.error("Server error !!");
         }
     }
 
@@ -61,6 +70,14 @@ function Login(){
                         required
                     />
 
+                    {errors.username && (
+                        <p style={{ color: "red", fontSize: "13px" }}>
+                            {errors.username}
+                        </p>
+                    )}
+
+                    <br/>
+
                     <input
                         type="password"
                         name="password"
@@ -68,6 +85,14 @@ function Login(){
                         onChange={handleChange}
                         required
                     />
+
+                    {errors.password && (
+                        <p style={{ color: "red", fontSize: "13px" }}>
+                            {errors.password}
+                        </p>
+                    )}
+
+                    <br />
 
                     <button type="submit">
                         Login

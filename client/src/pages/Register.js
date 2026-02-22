@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {useNavigate} from "react-router-dom";
-import axios from "axios";
 import "../UI/Register.css";
+import { toast } from "react-toastify";
 
 function Register(){
     const navigate = useNavigate();
@@ -12,6 +12,8 @@ function Register(){
         password: ""
     })
 
+    const [errors, setErrors] = useState({});
+
     const handleChange = (e) => {
         setUser({
             ...user,
@@ -21,6 +23,7 @@ function Register(){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrors({});  //Clear old errors
         
         try{
             const response = await fetch("/api/auth/register",{
@@ -34,18 +37,21 @@ function Register(){
             const data = await response.json();
 
             if (response.status === 201){
-                alert("Registered Successfully !!");
+                toast.success("Registered Successfully !!");
                 navigate("/");
             }
 
+            else if(response.status === 400){
+                setErrors(data);
+            }
             else{
-                alert(data.message);
+                toast.error(data.message || "Something went wrong");
             }
         }
 
         catch(error){
             console.error(error);
-            alert("Server error !!");
+            toast.error("Server error !!");
         }
     }
 
@@ -64,28 +70,48 @@ function Register(){
                             onChange={handleChange}
                             required
                         />
+                        {errors.username && (
+                            <p style={{ color: "red", fontSize: "13px" }}>
+                                {errors.username}
+                            </p>
+                        )}
+
                     </div>
 
                     <div className="input-group">
-                      <label>Email</label>
-                      <input
-                        type="email"
-                        name="email"
-                        placeholder="Enter your email"
-                        onChange={handleChange}
-                        required
-                      />
+                        <label>Email</label>
+                        <input
+                          type="email"
+                          name="email"
+                          placeholder="Enter your email"
+                          onChange={handleChange}
+                          required
+                        />
+
+                        {errors.email && (
+                            <p style={{ color: "red", fontSize: "13px" }}>
+                                {errors.email}
+                            </p>
+                        )}
+
                     </div>
 
                     <div className="input-group">
-                      <label>Password</label>
-                      <input
-                        type="password"
-                        name="password"
-                        placeholder="Enter password"
-                        onChange={handleChange}
-                        required
-                      />
+                        <label>Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Enter password"
+                            onChange={handleChange}
+                            required
+                        />
+
+                        {errors.password && (
+                            <p style={{ color: "red", fontSize: "13px" }}>
+                                {errors.password}
+                            </p>
+                        )}
+
                     </div>
 
                     <button type="submit" className="register-btn">
