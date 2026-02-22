@@ -31,6 +31,13 @@ export const registerUser = async(req, res) => {
           });
         }
 
+        //Checking if the password is atleast 8 characters long
+        if (!password || password.length < 8) {
+            return res.status(400).json({
+                message: "Password must be at least 8 characters long"
+            });
+        }
+
         //Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
 
