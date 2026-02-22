@@ -38,7 +38,7 @@ function Register(){
 
             if (response.status === 201){
                 toast.success("Registered Successfully !!");
-                navigate("/");
+                navigate("/home");
             }
 
             else if(response.status === 400){
