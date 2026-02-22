@@ -24,6 +24,10 @@ export const registerUser = async(req, res) => {
             errors.password = "Password must be at least 8 characters";
         }
 
+        if (Object.keys(errors).length >0){
+            return res.status(400).json(errors);
+        }
+
         //Checking if the user exists
         const existingUser = await User.findOne({username});
         if (existingUser){
