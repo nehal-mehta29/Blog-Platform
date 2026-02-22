@@ -7,7 +7,6 @@
     padding: 0;
 }
 
-/* Same rich beige gradient background */
 .login-container {
     height: 100vh;
     display: flex;
@@ -16,13 +15,11 @@
     background: linear-gradient(135deg, #f5f5dc 0%, #e3d5ca 50%, #d4a373 100%);
 }
 
-/* The High-Contrast Box */
 .login-box {
     width: 380px;
     padding: 50px 40px;
     background: #ffffff;
     border-radius: 28px;
-    /* Deep shadow to make the white box pop against the beige */
     box-shadow: 0 20px 40px rgba(67, 40, 24, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.7);
     text-align: center;
@@ -36,18 +33,16 @@
     letter-spacing: -0.5px;
 }
 
-/* Form Layout */
 .login-box form {
     display: flex;
     flex-direction: column;
     gap: 18px;
 }
 
-/* Styled Inputs */
 .login-box input {
     width: 100%;
     padding: 14px 18px;
-    background: #fdfaf7; /* Very light cream tint */
+    background: #fdfaf7; 
     border: 2px solid #f1ece1;
     border-radius: 14px;
     font-size: 15px;
@@ -56,19 +51,17 @@
     transition: all 0.3s ease;
 }
 
-/* High-contrast focus state */
 .login-box input:focus {
     background: #ffffff;
-    border-color: #bc6c25; /* Earthy accent color */
+    border-color: #bc6c25; 
     box-shadow: 0 0 0 4px rgba(188, 108, 37, 0.1);
 }
 
-/* The "Primary" Button */
 .login-box button {
     width: 100%;
     padding: 16px;
     margin-top: 10px;
-    background-color: #432818; /* Deep brown */
+    background-color: #432818; 
     color: #ffffff;
     border: none;
     font-weight: 700;
