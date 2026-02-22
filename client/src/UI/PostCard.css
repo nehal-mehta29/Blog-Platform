@@ -1,0 +1,119 @@
+/* Importing the theme font */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 1. Page Background: Matches Landing & Login */
+.register-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f5f5dc 0%, #e3d5ca 50%, #d4a373 100%);
+    background-size: cover;
+}
+
+/* 2. The Box: Designed to "Pop" */
+.register-box {
+    width: 400px;
+    padding: 50px 40px;
+    background: #ffffff;
+    border-radius: 28px;
+    
+    /* Warm, deep shadow to prevent blending with the beige */
+    box-shadow: 
+        0 20px 40px rgba(67, 40, 24, 0.15),
+        0 1px 3px rgba(0, 0, 0, 0.05);
+    
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+/* 3. Heading: Deep Brown for high legibility */
+.register-box h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #432818;
+    margin-bottom: 30px;
+    letter-spacing: -0.5px;
+}
+
+/* 4. Input Groups */
+.input-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.input-group label {
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #6b705c; /* Muted olive-brown */
+    padding-left: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 18px;
+    background: #fdfaf7; /* Off-white tint */
+    border: 2px solid #f1ece1;
+    border-radius: 14px;
+    font-size: 15px;
+    color: #432818;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Focus State: Earthy Orange-Brown Glow */
+.input-group input:focus {
+    background: #ffffff;
+    border-color: #bc6c25;
+    box-shadow: 0 0 0 4px rgba(188, 108, 37, 0.1);
+}
+
+/* 5. The Main Button: High Contrast */
+.register-btn {
+    width: 100%;
+    padding: 16px;
+    margin-top: 15px;
+    background-color: #432818; /* Deep Midnight Brown */
+    color: #ffffff;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(67, 40, 24, 0.2);
+}
+
+.register-btn:hover {
+    background-color: #603808;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(67, 40, 24, 0.3);
+}
+
+.register-btn:active {
+    transform: translateY(0);
+}
+
+/* Footer link for existing users */
+.register-footer {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #6b705c;
+}
+
+.register-footer span {
+    color: #bc6c25;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: underline;
+}
