@@ -3,6 +3,7 @@ import User from "../Schema/User.js";
 
 export const registerUser = async(req, res) => {
     try{
+        //To extract data
         const{username, email, password} = req.body;
 
         let errors = {};
@@ -24,6 +25,7 @@ export const registerUser = async(req, res) => {
             errors.password = "Password must be at least 8 characters";
         }
 
+        //If there are validation errors then return them
         if (Object.keys(errors).length >0){
             return res.status(400).json(errors);
         }
