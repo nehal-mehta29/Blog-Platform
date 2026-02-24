@@ -12,12 +12,12 @@ const postSchema = new mongoose.Schema(
             required: true
         },
         author: {
-            type: mongoose.Schema.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId, //Stores MongoDB ObjectId
             ref: "User",
             required: trim
         }
     },
-    {timestamps: true}
+    {timestamps: true}   //Adds timestamp of the post
 )
 
 export default mongoose.model("Post", postSchema);
