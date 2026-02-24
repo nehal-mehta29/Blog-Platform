@@ -49,7 +49,7 @@
     transform: translateY(-1px);
 }
 
-.navbar div a[href$="login"] {
+.navbar div a[href$="/"] {
     background-color: #d4a373; 
     color: #432818;
     padding: 10px 25px;
@@ -58,7 +58,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.navbar div a[href$="login"]:hover {
+.navbar div a[href$="/"]:hover {
     background-color: #bc6c25;
     color: #ffffff;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
