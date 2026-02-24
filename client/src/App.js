@@ -6,6 +6,7 @@ import Login from "./pages/Login.js";
 import Home from "./pages/Home.js";
 import { ToastContainer } from "react-toastify";
 import Navbar from "./components/NavBar.js";
+import CreatePost from "./pages/CreatePost.js";
 
 function AppContent(){
   const location = useLocation();
@@ -20,6 +21,7 @@ function AppContent(){
         <Route path="/register" element={<Register/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/home" element={<Home />} />
+        <Route path="/create" element={<CreatePost/>}/>
       </Routes>
       
       <ToastContainer position="bottom-right" autoClose={3000} />
