@@ -14,7 +14,7 @@ const postSchema = new mongoose.Schema(
         author: {
             type: mongoose.Schema.Types.ObjectId, //Stores MongoDB ObjectId
             ref: "User",
-            required: trim
+            required: true
         }
     },
     {timestamps: true}   //Adds timestamp of the post
