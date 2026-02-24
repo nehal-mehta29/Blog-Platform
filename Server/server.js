@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";   //For connecting backend and frontend
 import authRotes from "./routes/authRoutes.js";
+import postRoutes from "./routes/postRoutes.js";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 
 //Routes
 app.use("/api/auth", authRotes);
+app.use("/api/posts", postRoutes);
 
 //Mongo DB connection
 mongoose.connect(process.env.MONGO_URL)
