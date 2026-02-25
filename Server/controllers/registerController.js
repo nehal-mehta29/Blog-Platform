@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import User from "../Schema/User.js";
+import jwt from "jsonwebtoken";
 
 export const registerUser = async(req, res) => {
     try{
@@ -50,15 +51,23 @@ export const registerUser = async(req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         //Save the user
-        await User.create({
+        const savedUser = await User.create({
             username,
             email,
             password: hashedPassword
         });
 
+        //To generate token for new user
+        const token = jwt.sign(
+            {id: savedUser._id},
+            process.env.JWT_SECRET,
+            {expiresIn: "7d"}
+        )
+
         res.status(201).json({
             success: true,
-            message : "User registered successfully !!"
+            message : "User registered successfully !!",
+            token
         });
     }
 

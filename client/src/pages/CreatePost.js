@@ -41,7 +41,7 @@ function CreatePost() {
                 post,
                 {
                     headers: {
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 }
             );

@@ -45,6 +45,8 @@ function Register(){
             const data = await response.json();
 
             if (response.status === 201){
+                //To store the token
+                localStorage.setItem("token", data.token);
                 toast.success("Registered Successfully !!");
                 navigate("/home");
             }
