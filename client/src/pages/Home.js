@@ -75,7 +75,7 @@ function Home() {
                         {/* Post Metadata */}
                         <p className="post-meta">
                             By {post.author?.username}.{" "}
-                            {formatDistanceToNow(post.createdAt)}
+                            {formatDistanceToNow(new Date(post.createdAt), {addSuffix: true})}
                         </p>
 
                         </Link>
