@@ -11,6 +11,6 @@ router.post("/",authMiddleare, createPost);
 router.get("/", getAllPosts);
 
 //Get single post
-router.get("/", getSinglePost);
+router.get("/:id", getSinglePost);
 
 export default router;
