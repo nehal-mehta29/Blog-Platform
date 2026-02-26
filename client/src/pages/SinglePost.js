@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner.js";
+import "../UI/SinglePost.css";
 
 function SinglePost(){
     const {id} = useParams();
@@ -44,7 +45,7 @@ function SinglePost(){
                 {post.content}
             </div>
 
-            <button onClick = {() =>navigate(-1)}>
+            <button className="back-btn" onClick = {() =>navigate(-1)}>
                 Go back
             </button>
         </div>

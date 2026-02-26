@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+/* Page Background*/
+.single-post-container {
+    min-height: 100vh;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #f5f5dc 0%, #e3d5ca 50%, #d4a373 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* The Main Content Card */
+.single-post-card {
+    width: 100%;
+    max-width: 850px;
+    background: #ffffff;
+    padding: 60px;
+    border-radius: 40px; 
+    box-shadow: 
+        0 10px 30px rgba(67, 40, 24, 0.05),
+        0 30px 60px rgba(67, 40, 24, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/*Title Styling */
+.single-post-card h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #2c1a10;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    letter-spacing: -1.5px;
+}
+
+.single-post-card .post-meta {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 0;
+    border-top: 1px solid #f1ece1;
+    border-bottom: 1px solid #f1ece1;
+    margin-bottom: 40px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #8d7b6d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.single-post-card .post-meta span {
+    color: #bc6c25; 
+}
+
+/*The Content Body */
+.post-content {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #432818;
+    white-space: pre-wrap;
+    margin-bottom: 40px;
+}
+
+/*The "Go Back" Button */
+.back-btn {
+    padding: 14px 32px;
+    background-color: #432818; 
+    color: #ffffff;
+    border: none;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #bc6c25;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(188, 108, 37, 0.2);
+}
+
+@media (max-width: 768px) {
+    .single-post-card {
+        padding: 35px 25px;
+        border-radius: 30px;
+    }
+    .single-post-card h1 {
+        font-size: 32px;
+    }
+}
