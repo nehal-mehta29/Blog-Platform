@@ -68,3 +68,76 @@ export const getSinglePost = async (req, res) => {
         res.status(500).json({message: "Server error"});
     }
 }
+
+//DELETE POST
+export const deletePost = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ message: "Invalid post ID" });
+        }
+
+        const post = await Post.findById(id);
+
+        if (!post) {
+            return res.status(404).json({ message: "Post not found" });
+        }
+
+        // Ownership check
+        if (post.author.toString() !== req.user.id) {
+            return res.status(403).json({
+                message: "You are not authorized to delete this post"
+            })
+        }
+
+        await post.deleteOne();
+
+        res.status(200).json({
+            message: "Post deleted successfully"
+        })
+
+    } 
+    catch (error) {
+        res.status(500).json({ message: "Server error" });
+    }
+}
+
+//UPDATE POST
+export const updatePost = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { title, content } = req.body;
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ message: "Invalid post ID" });
+        }
+
+        const post = await Post.findById(id);
+
+        if (!post) {
+            return res.status(404).json({ message: "Post not found" });
+        }
+
+        // Ownership check
+        if (post.author.toString() !== req.user.id) {
+            return res.status(403).json({
+                message: "You are not authorized to edit this post"
+            })
+        }
+
+        post.title = title?.trim() || post.title;
+        post.content = content?.trim() || post.content;
+
+        const updatedPost = await post.save();
+
+        res.status(200).json({
+            message: "Post updated successfully",
+            post: updatedPost
+        })
+
+    } 
+    catch (error) {
+        res.status(500).json({ message: "Server error" });
+    }
+}
