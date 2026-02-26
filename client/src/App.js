@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import Navbar from "./components/NavBar.js";
 import CreatePost from "./pages/CreatePost.js";
 import SinglePost from "./pages/SinglePost.js";
+import NotFound from "./pages/NotFound.js";
 
 function AppContent(){
   const location = useLocation();
@@ -24,6 +25,8 @@ function AppContent(){
         <Route path="/home" element={<Home />} />
         <Route path="/create" element={<CreatePost/>}/>
         <Route path="/post/:id" element={<SinglePost />} />
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
       
       <ToastContainer position="bottom-right" autoClose={3000} />
