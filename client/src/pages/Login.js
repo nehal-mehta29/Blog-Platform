@@ -50,6 +50,9 @@ function Login(){
                 //Store JWT token in local storage
                 localStorage.setItem("token", data.token);
 
+                //Store user also
+                localStorage.setItem("user", JSON.stringify(data.user));
+
                 //Redirect to home page
                 navigate("/home");
             }

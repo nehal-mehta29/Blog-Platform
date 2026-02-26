@@ -4,7 +4,24 @@ import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner.js";
 import "../UI/SinglePost.css";
 
-function SinglePost({currentUser}){
+function SinglePost(){
+    //To read user from localStorage
+    let currentUser = null;
+    
+    try{
+        const storedUser = localStorage.getItem("user");
+        if(storedUser && storedUser !== "undefined"){
+            currentUser = JSON.parse(storedUser);
+        }
+    }
+
+    catch(error){
+        console.error("Invalid user in localStorage");
+        currentUser = null;
+    }
+
+    const token = localStorage.getItem("token");
+
     const {id} = useParams();
     const navigate = useNavigate();
     
@@ -35,7 +52,11 @@ function SinglePost({currentUser}){
     const handleDelete = async() => {
         if(window.confirm("Are you sure you want to delete this post?")){
             try{
-                await axios.delete(`/api/posts/${id}`);
+                await axios.delete(`/api/posts/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
                 navigate("/home");  //Navigate to home page
             }
 
@@ -45,11 +66,24 @@ function SinglePost({currentUser}){
         }
     }
 
+    //For editing
+    const startEditing = () => {
+        setFormData({
+            title: post.title,
+            content: post.content,
+        })
+        setEditing(true);
+    }
+ 
     //Update post handler
     const handleUpdate = async () => {
         try {
-            const res = await axios.put(`/api/posts/${id}`, formData);
-            setPost(res.data);
+            const res = await axios.put(`/api/posts/${id}`, formData, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            setPost(res.data.post);
             setEditing(false);
         } 
         catch (err) {
@@ -63,7 +97,7 @@ function SinglePost({currentUser}){
     if(!post) return null;
 
     //To check if the user viewing a post is the author of that post
-    const isAuthor = currentUser === post.author?.username; 
+    const isAuthor = currentUser && post.author && currentUser.id === post.author._id;
 
     return(
         <div className="single-post-container">
@@ -73,11 +107,15 @@ function SinglePost({currentUser}){
                     <input 
                         type="text"
                         value={formData.title}
-                        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                        onChange={(e) => 
+                            setFormData({ ...formData, title: e.target.value })
+                        }
                     />
                     <textarea
                         value={formData.content}
-                        onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+                        onChange={(e) => 
+                            setFormData({ ...formData, content: e.target.value })
+                        }
                     />
                     <button onClick={handleUpdate}>Save</button>
                     <button onClick={() => setEditing(false)}>Cancel</button>
@@ -96,9 +134,9 @@ function SinglePost({currentUser}){
                         {post.content}
                     </div>
 
-                    {isAuthor && !editing && (
+                    {isAuthor && (
                         <div className="post-actions">
-                            <button onClick={() => setEditing(true)}>Edit</button>
+                            <button onClick={startEditing}>Edit</button>
                             <button onClick={handleDelete}>Delete</button>
                         </div>
                     )}

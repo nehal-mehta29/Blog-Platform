@@ -39,8 +39,14 @@ export const loginUser = async(req, res) => {
             {expiresIn: "7d"}
         )
 
-        //Sending token to client
-        res.json({token});
+        //Sending token and user info
+        res.status(200).json({
+            token,
+            user: {
+                id: user._id.toString(),
+                username: user.username
+            }
+        });
     }
 
     catch(error){

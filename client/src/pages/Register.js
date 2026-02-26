@@ -47,6 +47,10 @@ function Register(){
             if (response.status === 201){
                 //To store the token
                 localStorage.setItem("token", data.token);
+
+                //Store user also
+                localStorage.setItem("user", JSON.stringify(data.user));
+
                 toast.success("Registered Successfully !!");
                 navigate("/home");
             }

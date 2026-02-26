@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
-/* Page Background*/
+/* Page Background */
 .single-post-container {
     min-height: 100vh;
     padding: 80px 20px;
@@ -23,24 +23,24 @@
     border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
-/*Title Styling */
+/* Title Styling  */
 .single-post-card h1 {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 48px;
+    font-size: 42px;
     font-weight: 700;
     color: #2c1a10;
-    line-height: 1.2;
-    margin-bottom: 24px;
+    line-height: 1.1;
+    margin: 0 0 12px 0; 
     letter-spacing: -1.5px;
 }
 
+/* Meta Section */
 .single-post-card .post-meta {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     width: 100%;
-    padding: 20px 0;
-    border-top: 1px solid #f1ece1;
-    border-bottom: 1px solid #f1ece1;
+    padding: 0 0 15px 0; 
+    border-bottom: 2px solid #f1ece1; 
     margin-bottom: 40px;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 14px;
@@ -54,7 +54,7 @@
     color: #bc6c25; 
 }
 
-/*The Content Body */
+/* The Content Body */
 .post-content {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 18px;
@@ -64,7 +64,67 @@
     margin-bottom: 40px;
 }
 
-/*The "Go Back" Button */
+/* Action Buttons (Edit/Delete) */
+.post-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.post-actions button {
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s ease;
+}
+
+/* Edit Button */
+.post-actions button:nth-child(1) {
+    background-color: #5d4037;
+    color: white;
+}
+
+/* Delete Button */
+.post-actions button:nth-child(2) {
+    background-color: #f8f4f1;
+    color: #a34e3a;
+    border: 1px solid #f1ece1;
+}
+
+/* ===================== Edit Form Styling ===================== */
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 60%;
+}
+
+.edit-form input, .edit-form textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    border: 2px solid #f1ece1;
+    background: #fdfaf7;
+    font-size: 16px;
+    outline: none;
+}
+
+.edit-form textarea {
+    min-height: 300px;
+}
+
+.edit-form button {
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+}
+
+/* "Go Back" Button */
 .back-btn {
     padding: 14px 32px;
     background-color: #432818; 
@@ -80,15 +140,4 @@
 .back-btn:hover {
     background-color: #bc6c25;
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(188, 108, 37, 0.2);
-}
-
-@media (max-width: 768px) {
-    .single-post-card {
-        padding: 35px 25px;
-        border-radius: 30px;
-    }
-    .single-post-card h1 {
-        font-size: 32px;
-    }
 }
