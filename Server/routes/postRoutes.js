@@ -1,5 +1,5 @@
 import express from "express";
-import { createPost, deletePost, getAllPosts, getSinglePost, updatePost } from "../controllers/postController.js";
+import { createPost, deletePost, getAllPosts, getMyPosts, getSinglePost, updatePost } from "../controllers/postController.js";
 import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
@@ -9,6 +9,9 @@ router.post("/",authMiddleware, createPost);
 
 //Get all Post
 router.get("/", getAllPosts);
+
+//Get user's Post
+router.get("/my-post", authMiddleware, getMyPosts);
 
 //Get single post
 router.get("/:id", getSinglePost);
