@@ -5,6 +5,7 @@ import cors from "cors";   //For connecting backend and frontend
 import authRoutes from "./routes/authRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
 import searchRoutes from "./routes/searchRoutes.js";
+import commentRoutes from "./routes/authRoutes.js";
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/search", searchRoutes);
+app.use("/api/comments", commentRoutes);
 
 //Mongo DB connection
 mongoose.connect(process.env.MONGO_URL)
