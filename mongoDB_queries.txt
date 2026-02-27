@@ -1,0 +1,105 @@
+============================== BLOG PLATFORM – MONGODB QUERIES ==============================
+
+# USE DATABASE :
+    use blogPlatform
+
+# USER COLLECTION:
+
+    - View all users:
+        db.users.find()
+
+    - Find user by email:
+        db.users.findOne({ email: "user@example.com" })
+
+    - Create a new user (manual insert example):
+        db.users.insertOne({
+            username: "john_doe",
+            email: "john@example.com",
+            password: "hashed_password_here",
+            createdAt: new Date()
+        })
+
+    - Delete a user:
+        db.users.deleteOne({ email: "john@example.com" })
+
+# POSTS COLLECTION
+
+    - View all posts:
+        db.posts.find()
+
+    - View posts sorted by newest first:
+        db.posts.find().sort({ createdAt: -1 })
+
+    - Find post by ID:
+        db.posts.findOne({ _id: ObjectId("POST_ID_HERE") })
+
+    - Find posts by author:
+        db.posts.find({ author: "USER_ID_HERE" })
+
+    - Insert new post:
+        db.posts.insertOne({
+            title: "My First Blog",
+            content: "This is my blog content.",
+            author: ObjectId("USER_ID_HERE"),
+            createdAt: new Date()
+        })
+
+    - Update a post:
+        db.posts.updateOne(
+            { _id: ObjectId("POST_ID_HERE") },
+            { $set: { title: "Updated Title", content: "Updated content" } }
+        )
+
+    - Delete a post:
+        db.posts.deleteOne({ _id: ObjectId("POST_ID_HERE") })
+
+# COMMENTS COLLECTION
+
+
+    - View all comments:
+        db.comments.find()
+
+    - Find comments for a specific post:
+        db.comments.find({ postId: ObjectId("POST_ID_HERE") })
+
+    - Add a comment:
+        db.comments.insertOne({
+            postId: ObjectId("POST_ID_HERE"),
+            author: ObjectId("USER_ID_HERE"),
+            text: "Nice blog!",
+            createdAt: new Date()
+        })
+
+    - Delete comment:
+        db.comments.deleteOne({ _id: ObjectId("COMMENT_ID_HERE") })
+
+# SEARCH QUERIES
+    - Search posts by title (case insensitive):
+        db.posts.find({
+            title: { $regex: "blog", $options: "i" }
+        })
+
+    - Search posts by author username
+        db.posts.find({
+            authorName: { $regex: "john", $options: "i" }
+        })
+
+# CREATE INDEXES (Performance)
+    - Index for email uniqueness:
+        db.users.createIndex({ email: 1 }, { unique: true })
+
+    - Index for post search:
+        db.posts.createIndex({ title: "text", content: "text" })
+
+    - Text search example:
+        db.posts.find({ $text: { $search: "mongodb" } })
+
+
+
+# DROP COLLECTIONS (If Needed):
+    db.users.drop()
+    db.posts.drop()
+    db.comments.drop()
+
+# SHOW COLLECTIONS:
+    show collections
