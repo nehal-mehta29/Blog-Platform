@@ -1,3 +1,5 @@
+/* ============================ 404 ============================ */
+
 import {Link} from "react-router-dom";
 import "../UI/NotFound.css";
 
@@ -15,4 +17,4 @@ const NotFound = () => {
     )
 }
 
-export default NotFound
+export default NotFound;

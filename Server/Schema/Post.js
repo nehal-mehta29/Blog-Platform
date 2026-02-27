@@ -1,3 +1,5 @@
+/* =========================== POST SCHEMA =========================== */
+
 import mongoose from "mongoose";
 
 const postSchema = new mongoose.Schema(

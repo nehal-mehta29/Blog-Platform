@@ -1,3 +1,5 @@
+/* ================================ SINGLE POST VIEW ================================ */
+
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -21,24 +23,30 @@ function SinglePost(){
         currentUser = null;
     }
 
+    //Retrieve token from localStorage
     const token = localStorage.getItem("token");
 
+    // ========================== ROUTER HOOKS ==========================
     const {id} = useParams();
     const navigate = useNavigate();
     
-    const[post, setPost] = useState(null);
-    const[loading, setLoading] = useState(true);
-    const[error, setError] = useState("");
-    const[editing, setEditing] = useState(false);
-    const[formData, setFormData] = useState({title: "", content: ""});
-    const [comments, setComments] = useState([]);
-    const [commentText, setCommentText] = useState("");
+     // ========================== STATE VARIABLES ==========================
+    const[post, setPost] = useState(null);      //Single post data
+    const[loading, setLoading] = useState(true);   //Loading state for API calls
+    const[error, setError] = useState("");  //Error messages
+    const[editing, setEditing] = useState(false);   //Editing mode toggle
+    const[formData, setFormData] = useState({title: "", content: ""});  //Form data for editing
+    const [comments, setComments] = useState([]);   //List of comments
+    const [commentText, setCommentText] = useState(""); //New comment input
 
-    //Fetching single post
+    
+    // ========================== FETCH SINGLE POST ==========================
     useEffect(() => {
         const fetchPost = async() =>{
             try{
                 const res = await axios.get(`/api/posts/${id}`);
+
+                //Save post data
                 setPost(res.data);
             }
             catch(err){
@@ -51,11 +59,14 @@ function SinglePost(){
         fetchPost();
     }, [id])
 
-    //Fetching comments
+    
+    // ========================== FETCH COMMENTS ==========================
     useEffect(() => {
         const fetchComments = async () => {
             try{
                 const res = await axios.get(`/api/comments/${id}`);
+
+                //Save comments
                 setComments(res.data);
             }
 
@@ -67,17 +78,19 @@ function SinglePost(){
         fetchComments();
     }, [id])
 
-    //Handle comment submit
+    // ========================== HANDLE COMMENT SUBMIT ==========================
     const handleCommentSubmit = async(e) => {
         e.preventDefault();
 
         try{
+
+            //Post new comment to API
             await axios.post(
                 `/api/comments/${id}`,
                 {content: commentText},
                 {
                     headers: {
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${token}`    //Authenticated request
                     }
                 }
             )
@@ -94,7 +107,7 @@ function SinglePost(){
         }
     }
 
-    //Delete post handler
+    // ========================== DELETE POST ==========================
     const handleDelete = async() => {
         if(window.confirm("Are you sure you want to delete this post?")){
             try{
@@ -112,7 +125,7 @@ function SinglePost(){
         }
     }
 
-    //For editing
+    // ========================== EDIT POST ==========================
     const startEditing = () => {
         setFormData({
             title: post.title,
@@ -138,6 +151,7 @@ function SinglePost(){
         }
     };
 
+    // ========================== CONDITIONAL RENDERING ==========================
     if(loading) return <LoadingSpinner/>;
     if(error) return <p>{error}</p>;
     if(!post) return null;
@@ -149,6 +163,8 @@ function SinglePost(){
         <div className="single-post-container">
             
             {editing ? (
+
+                // ================= EDIT FORM =================
                 <div className="edit-form">
                     <input 
                         type="text"
@@ -169,6 +185,7 @@ function SinglePost(){
 
             ) : (
                 <>
+                    {/* ================= POST CONTENT ================= */}
                     <h1>{post.title}</h1>
 
                     <p className="post-meta">
@@ -180,6 +197,7 @@ function SinglePost(){
                         {post.content}
                     </div>
 
+                    {/* ================= POST ACTIONS (EDIT/DELETE) ================= */}
                     {isAuthor && (
                         <div className="post-actions">
                             <button onClick={startEditing}>Edit</button>
@@ -206,6 +224,7 @@ function SinglePost(){
                             <button type="submit">Post Comment</button>
                         </form>
 
+                        {/* Render comments */}
                         {comments.length === 0 ? (
                             <p>No comments yet.</p>
                         ) : (

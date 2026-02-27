@@ -1,3 +1,5 @@
+/* =========================== REGISTER CONTROLLER =========================== */
+
 import bcrypt from "bcryptjs";
 import User from "../Schema/User.js";
 import jwt from "jsonwebtoken";

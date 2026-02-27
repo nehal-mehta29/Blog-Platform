@@ -1,3 +1,5 @@
+/* ============================ POSTCARD ============================ */
+
 import { Link } from "react-router-dom";
 import "../UI/PostCard.css";
 

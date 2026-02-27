@@ -1,6 +1,9 @@
+/* =========================== SEARCH CONTROLLER =========================== */
+
 import User from "../Schema/User.js";
 import Post from "../Schema/Post.js";
 
+// ================= SEARCH POSTS =================
 export const searchPosts = async (req, res) => {
     try{
         const {query} = req.query;

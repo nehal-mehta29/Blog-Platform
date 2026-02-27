@@ -1,3 +1,5 @@
+/* =========================== LOGIN CONTROLLER  =========================== */
+
 import User from "../Schema/User.js"
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";

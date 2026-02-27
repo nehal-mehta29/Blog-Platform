@@ -1,21 +1,26 @@
+/* =========================== POST CONTROLLER =========================== */
+
 import Post from "../Schema/Post.js";
 import mongoose from "mongoose";
 
-//CREATE POST
+// ================= CREATE NEW POST =================
 export const createPost = async (req, res) => {
     try {
+        // Extract data from request body
         const { title, content } = req.body;
         
         if (!title || !content) {
             return res.status(400).json({ message: "All fields are required" });
         }
         
+        // Create new post object
         const newPost = new Post({
             title,
             content,
             author: req.user.id
         })
       
+        // Save post to database
         const savedPost = await newPost.save();
       
         res.status(201).json({
@@ -29,7 +34,7 @@ export const createPost = async (req, res) => {
     }
 }
 
-//GET ALL POSTS
+// ================= GET ALL POSTS =================
 export const getAllPosts = async(req, res) => {
     try{
         const posts = await Post.find()
@@ -45,7 +50,7 @@ export const getAllPosts = async(req, res) => {
     }
 }
 
-//GET SINGLE POST
+// ================= GET SINGLE POST =================
 export const getSinglePost = async (req, res) => {
     try{
         const{id} = req.params;
@@ -69,7 +74,7 @@ export const getSinglePost = async (req, res) => {
     }
 }
 
-//DELETE POST
+// ================= DELETE POST =================
 export const deletePost = async (req, res) => {
     try {
         const { id } = req.params;
@@ -103,7 +108,7 @@ export const deletePost = async (req, res) => {
     }
 }
 
-//UPDATE POST
+// ================= UPDATE POST =================
 export const updatePost = async (req, res) => {
     try {
         const { id } = req.params;
@@ -142,7 +147,7 @@ export const updatePost = async (req, res) => {
     }
 }
 
-//GET USER POST
+// ================= GET POSTS BY LOGGED-IN USER =================
 export const getMyPosts = async(req,res) => {
     try{
         const posts = await Post.find({author: req.user.id})
