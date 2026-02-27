@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";   //For connecting backend and frontend
 import authRoutes from "./routes/authRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
+import searchRoutes from "./routes/searchRoutes.js";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 //Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
+app.use("/api/search", searchRoutes);
 
 //Mongo DB connection
 mongoose.connect(process.env.MONGO_URL)
