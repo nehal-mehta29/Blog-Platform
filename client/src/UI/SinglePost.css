@@ -239,3 +239,103 @@
     line-height: 1.6;
     color: #432818;
 }
+
+/* =========== Responsive =========== */
+
+@media (max-width: 768px) {
+    .single-post-container {
+        padding: 50px 16px;
+    }
+
+    .single-post-card {
+        padding: 35px 25px;
+        border-radius: 30px;
+    }
+
+    .single-post-card h1 {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    .post-content {
+        font-size: 15px;
+        margin-bottom: 25px;
+    }
+
+    .edit-form {
+        width: 90%;
+    }
+
+    .back-btn {
+        padding: 12px 28px;
+        font-size: 14px;
+    }
+
+    .comment-form textarea {
+        min-height: 100px;
+        font-size: 14px;
+    }
+
+    .comment-form button {
+        padding: 10px 24px;
+        font-size: 14px;
+    }
+
+    .comment-card {
+        padding: 16px 20px;
+        border-radius: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .single-post-container {
+        padding: 40px 12px;
+    }
+
+    .single-post-card {
+        padding: 25px 20px;
+        border-radius: 20px;
+    }
+
+    .single-post-card h1 {
+        font-size: 26px;
+        line-height: 1.1;
+    }
+
+    .post-meta {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 12px;
+    }
+
+    .post-content {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .edit-form {
+        width: 100%;
+    }
+
+    .back-btn {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 13px;
+    }
+
+    .comment-form textarea {
+        min-height: 80px;
+        font-size: 13px;
+    }
+
+    .comment-form button {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 13px;
+    }
+
+    .comment-card {
+        padding: 12px 16px;
+        border-radius: 14px;
+    }
+}

@@ -14,12 +14,12 @@
 .profile-container h2 {
     font-size: 38px;
     font-weight: 700;
-    color: #2c1a10; /* Deep Chocolate */
+    color: #2c1a10; 
     margin-bottom: 50px;
     letter-spacing: -1.5px;
 }
 
-/* 1. The Post Card - Matching your "Sleek Subheading" style */
+/* Post Card */
 .profile-container .post-card {
     width: 100%;
     max-width: 800px;
@@ -29,8 +29,6 @@
     margin-bottom: 25px;
     position: relative;
     overflow: hidden;
-    
-    /* Elegant Depth */
     box-shadow: 0 15px 35px rgba(67, 40, 24, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.6);
     transition: transform 0.3s ease;
@@ -44,14 +42,14 @@
     top: 0;
     bottom: 0;
     width: 6px;
-    background: #bc6c25; /* Earthy Orange */
+    background: #bc6c25; 
 }
 
 .profile-container .post-card:hover {
-    transform: translateX(8px); /* Subtle slide right on hover */
+    transform: translateX(8px); 
 }
 
-/* 2. Link Styling inside Card */
+/* Link Styling inside Card */
 .profile-container .post-card a {
     text-decoration: none;
     display: block;
@@ -70,11 +68,11 @@
     color: #bc6c25;
 }
 
-/* 3. Subheading Date - Extreme Right Alignment */
+/* Subheading Date  */
 .profile-container .post-card p {
     display: flex;
-    justify-content: flex-end; /* Pushes date to the extreme right */
-    border-top: 2px solid #f1ece1; /* Line sits above the date now */
+    justify-content: flex-end; 
+    border-top: 2px solid #f1ece1; 
     padding-top: 12px;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 13px;
@@ -94,7 +92,53 @@
     backdrop-filter: blur(10px);
 }
 
+/* =========== Responsive =========== */
+
 @media (max-width: 768px) {
-    .profile-container h2 { font-size: 30px; }
-    .profile-container .post-card { padding: 25px 30px; }
+    .profile-container {
+        padding: 50px 16px;
+    }
+
+    .profile-container h2 {
+        font-size: 28px;
+        margin-bottom: 35px;
+        text-align: center;
+    }
+
+    .profile-container .post-card {
+        padding: 25px 20px;
+    }
+
+    .profile-container .post-card h3 {
+        font-size: 20px;
+    }
+
+    .profile-container .post-card p {
+        font-size: 11px;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        padding: 40px 12px;
+    }
+
+    .profile-container h2 {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    .profile-container .post-card {
+        padding: 20px 15px;
+        border-radius: 15px;
+    }
+
+    .profile-container .post-card h3 {
+        font-size: 18px;
+    }
+
+    .profile-container .post-card p {
+        font-size: 10px;
+    }
 }

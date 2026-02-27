@@ -53,7 +53,8 @@ function Home() {
 
     return(
         <div className="home-container">
-            <h2>All Blog Posts</h2>
+            <h1>WELCOME !!</h1>
+            <p>Discover ideas, stories, and insights shared by creators around the world.</p>
 
             {/* Search Input */}
             <input

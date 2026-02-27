@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
 
-/* 1. Page Background (Consistent with the rest of your app) */
+/* Page Background */
 .not-found-container {
     min-height: 100vh;
     padding: 20px;
@@ -13,9 +13,9 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-/* 2. Flat Error Code (No animation, no text-shadow) */
+/* Error Code */
 .not-found-container h1 {
-    font-size: 100px; /* Reduced size for a more grounded feel */
+    font-size: 100px;
     font-weight: 800;
     color: #432818; 
     margin: 0;
@@ -23,7 +23,7 @@
     letter-spacing: -2px;
 }
 
-/* 3. Error Description */
+/* Error Description */
 .not-found-container h2 {
     font-size: 28px;
     font-weight: 700;
@@ -39,7 +39,7 @@
     line-height: 1.6;
 }
 
-/* 4. Home Button (Matches your SinglePost 'Go Back' and 'Save' buttons) */
+/* Home Button */
 .home-btn {
     text-decoration: none;
     padding: 14px 32px;
@@ -49,19 +49,54 @@
     font-size: 15px;
     border-radius: 16px;
     transition: background-color 0.3s ease;
-    /* Removed the lift/shadow hover effect */
 }
 
 .home-btn:hover {
     background-color: #bc6c25;
 }
 
-/* Mobile Tweak */
-@media (max-width: 480px) {
-    .not-found-container h1 {
-        font-size: 80px;
+/* ========= Responsive ========= */
+
+@media (max-width: 768px) {
+    .not-found-container {
+        padding: 30px 20px;
     }
+
+    .not-found-container h1 {
+        font-size: 64px;
+        letter-spacing: -1px;
+    }
+
     .not-found-container h2 {
         font-size: 22px;
+    }
+
+    .not-found-container p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .not-found-container {
+        padding: 25px 15px;
+    }
+
+    .not-found-container h1 {
+        font-size: 48px;
+    }
+
+    .not-found-container h2 {
+        font-size: 18px;
+    }
+
+    .not-found-container p {
+        font-size: 14px;
+        max-width: 100%;
+    }
+
+    .home-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
     }
 }

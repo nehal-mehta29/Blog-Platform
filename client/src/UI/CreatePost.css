@@ -1,5 +1,7 @@
+/*Importing google font*/
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
 
+/*Base container*/
 .create-post-container {
     min-height: 100vh;
     display: flex;
@@ -19,6 +21,7 @@
     letter-spacing: -1px;
 }
 
+/*Form Card*/
 .create-post-container form {
     width: 100%;
     max-width: 600px;
@@ -32,7 +35,7 @@
     border: 1px solid rgba(255, 255, 255, 0.7);
 }
 
-/* Styled Input and Textarea */
+/*Input and Textarea */
 .create-post-container input,
 .create-post-container textarea {
     width: 100%;
@@ -94,12 +97,52 @@
     margin-top: 10px;
 }
 
-/* Responsive Scaling */
-@media (max-width: 650px) {
+/* ============ Responsive ============ */
+
+@media (max-width: 768px) {
     .create-post-container form {
-        padding: 25px;
+        padding: 28px;
+        border-radius: 22px;
     }
+
     .create-post-container h2 {
-        font-size: 26px;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .create-post-container input,
+    .create-post-container textarea {
+        font-size: 15px;
+        padding: 14px 16px;
+    }
+
+    .create-post-container button {
+        font-size: 16px;
+        padding: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .create-post-container {
+        padding: 40px 15px;
+    }
+
+    .create-post-container form {
+        padding: 20px;
+        border-radius: 18px;
+        gap: 15px;
+    }
+
+    .create-post-container h2 {
+        font-size: 20px;
+    }
+
+    .create-post-container textarea {
+        min-height: 160px;
+    }
+
+    .create-post-container button {
+        font-size: 15px;
+        padding: 12px;
     }
 }

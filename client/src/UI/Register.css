@@ -92,3 +92,66 @@
 .register-btn:active {
     transform: translateY(0);
 }
+
+/* =========== Responsive =========== */
+
+@media (max-width: 768px) {
+    .register-container {
+        padding: 0 20px;
+    }
+
+    .register-box {
+        width: 100%;
+        max-width: 320px;
+        padding: 35px;
+    }
+
+    .register-box h2 {
+        font-size: 22px;
+    }
+
+    .input-group label {
+        font-size: 13px;
+    }
+
+    .input-group input {
+        padding: 12px 14px;
+        font-size: 14px;
+    }
+
+    .register-btn {
+        padding: 13px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .register-container {
+        padding: 0 12px;
+    }
+
+    .register-box {
+        width: 100%;
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+
+    .register-box h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .input-group label {
+        font-size: 12px;
+    }
+
+    .input-group input {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    .register-btn {
+        padding: 12px;
+        font-size: 13px;
+    }
+}

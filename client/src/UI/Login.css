@@ -86,3 +86,43 @@
 .login-box button:active {
     transform: translateY(0);
 }
+
+/* ============ Responsive ============ */
+
+@media (max-width: 768px) {
+    .login-box {
+        padding: 40px 30px;
+        border-radius: 22px;
+    }
+
+    .login-box h2 {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 25px 15px;
+    }
+
+    .login-box {
+        padding: 30px 20px;
+        border-radius: 18px;
+    }
+
+    .login-box h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .login-box input {
+        font-size: 14px;
+        padding: 12px 14px;
+    }
+
+    .login-box button {
+        font-size: 14px;
+        padding: 12px;
+    }
+}
