@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+
+/* Page Background */
+.not-found-container {
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(135deg, #f5f5dc 0%, #e3d5ca 50%, #d4a373 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Error Code */
+.not-found-container h1 {
+    font-size: 100px;
+    font-weight: 800;
+    color: #432818; 
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+/* Error Description */
+.not-found-container h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c1a10;
+    margin: 15px 0 10px 0;
+}
+
+.not-found-container p {
+    font-size: 16px;
+    color: #6b705c;
+    margin-bottom: 35px;
+    max-width: 450px;
+    line-height: 1.6;
+}
+
+/* Home Button */
+.home-btn {
+    text-decoration: none;
+    padding: 14px 32px;
+    background-color: #432818;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.home-btn:hover {
+    background-color: #bc6c25;
+}
+
+/* ========= Responsive ========= */
+
+@media (max-width: 768px) {
+    .not-found-container {
+        padding: 30px 20px;
+    }
+
+    .not-found-container h1 {
+        font-size: 64px;
+        letter-spacing: -1px;
+    }
+
+    .not-found-container h2 {
+        font-size: 22px;
+    }
+
+    .not-found-container p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .not-found-container {
+        padding: 25px 15px;
+    }
+
+    .not-found-container h1 {
+        font-size: 48px;
+    }
+
+    .not-found-container h2 {
+        font-size: 18px;
+    }
+
+    .not-found-container p {
+        font-size: 14px;
+        max-width: 100%;
+    }
+
+    .home-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+    }
+}
