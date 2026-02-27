@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner.js";
+import { formatDistanceToNow } from "date-fns";
 import "../UI/SinglePost.css";
 
 function SinglePost(){
@@ -30,6 +31,8 @@ function SinglePost(){
     const[error, setError] = useState("");
     const[editing, setEditing] = useState(false);
     const[formData, setFormData] = useState({title: "", content: ""});
+    const [comments, setComments] = useState([]);
+    const [commentText, setCommentText] = useState("");
 
     //Fetching single post
     useEffect(() => {
@@ -47,6 +50,49 @@ function SinglePost(){
         }
         fetchPost();
     }, [id])
+
+    //Fetching comments
+    useEffect(() => {
+        const fetchComments = async () => {
+            try{
+                const res = await axios.get(`/api/comments/${id}`);
+                setComments(res.data);
+            }
+
+            catch(err){
+                console.error("Error fetching comments");
+            }
+        }
+
+        fetchComments();
+    }, [id])
+
+    //Handle comment submit
+    const handleCommentSubmit = async(e) => {
+        e.preventDefault();
+
+        try{
+            await axios.post(
+                `/api/comments/${id}`,
+                {content: commentText},
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            )
+
+            setCommentText("");
+
+            //Refresh comments after posting
+            const res = await axios.get(`/api/comments/${id}`);
+            setComments(res.data);
+        }
+
+        catch(err){
+            console.error("Error adding comment");
+        }
+    }
 
     //Delete post handler
     const handleDelete = async() => {
@@ -145,6 +191,39 @@ function SinglePost(){
                         Go back
                     </button>
 
+                    {/* ================= COMMENTS SECTION ================= */}
+
+                    <div className="comments-section">
+                        <h3>Comments</h3>
+
+                        <form onSubmit={handleCommentSubmit} className="comment-form">
+                            <textarea
+                                value={commentText}
+                                onChange={(e) => setCommentText(e.target.value)}
+                                placeholder="Write a comment..."
+                                required
+                            />
+                            <button type="submit">Post Comment</button>
+                        </form>
+
+                        {comments.length === 0 ? (
+                            <p>No comments yet.</p>
+                        ) : (
+                            comments.map((comment) => (
+                                <div key={comment._id} className="comment-item">
+                                    <strong>{comment.author?.username}</strong>
+                                    <span className="comment-time">
+                                        {" "}
+                                        {formatDistanceToNow(
+                                            new Date(comment.createdAt),
+                                            { addSuffix: true }
+                                        )}
+                                    </span>
+                                    <p>{comment.content}</p>
+                                </div>
+                            ))
+                        )}
+                    </div>
                 </>
             )}
         </div>

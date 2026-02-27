@@ -1,4 +1,4 @@
-import Comment from "../Schema/Comment";
+import Comment from "../Schema/Comment.js";
 
 export const createComment = async(req, res) => {
     try{

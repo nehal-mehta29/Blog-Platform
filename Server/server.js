@@ -5,7 +5,7 @@ import cors from "cors";   //For connecting backend and frontend
 import authRoutes from "./routes/authRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
 import searchRoutes from "./routes/searchRoutes.js";
-import commentRoutes from "./routes/authRoutes.js";
+import commentRoutes from "./routes/commentRoutes.js";
 
 dotenv.config();
 
