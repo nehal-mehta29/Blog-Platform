@@ -20,7 +20,7 @@ export default function Navbar() {
             <div>
                 <Link to="/home">Home</Link>
                 <Link to="/create">New Post</Link>
-                <Link to="profile">Profile</Link>
+                <Link to="/profile">Profile</Link>
                 <button onClick={handleLogout} className="logout-btn">
                     Logout
                 </button>

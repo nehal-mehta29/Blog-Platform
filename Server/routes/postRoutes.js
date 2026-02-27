@@ -7,11 +7,11 @@ const router = express.Router();
 //Create Post
 router.post("/",authMiddleware, createPost);
 
-//Get all Post
-router.get("/", getAllPosts);
-
 //Get user's Post
 router.get("/my-post", authMiddleware, getMyPosts);
+
+//Get all Post
+router.get("/", getAllPosts);
 
 //Get single post
 router.get("/:id", getSinglePost);

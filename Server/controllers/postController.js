@@ -145,7 +145,9 @@ export const updatePost = async (req, res) => {
 //GET USER POST
 export const getMyPosts = async(req,res) => {
     try{
-        const posts = (await Post.find({author: req.user.id})).toSorted({createdAt: -1});
+        const posts = await Post.find({author: req.user.id})
+            .sort({createdAt: -1})
+            .populate("author", "username")
 
         res.status(200).json(posts)
     }

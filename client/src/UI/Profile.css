@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* Main Container */
+.profile-container {
+    min-height: 100vh;
+    padding: 80px 24px;
+    background: linear-gradient(135deg, #f5f5dc 0%, #e3d5ca 50%, #d4a373 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Page Heading */
+.profile-container h2 {
+    font-size: 38px;
+    font-weight: 700;
+    color: #2c1a10; /* Deep Chocolate */
+    margin-bottom: 50px;
+    letter-spacing: -1.5px;
+}
+
+/* 1. The Post Card - Matching your "Sleek Subheading" style */
+.profile-container .post-card {
+    width: 100%;
+    max-width: 800px;
+    background: #ffffff;
+    padding: 35px 40px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    position: relative;
+    overflow: hidden;
+    
+    /* Elegant Depth */
+    box-shadow: 0 15px 35px rgba(67, 40, 24, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    transition: transform 0.3s ease;
+}
+
+/* Sidebar Accent Line */
+.profile-container .post-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: #bc6c25; /* Earthy Orange */
+}
+
+.profile-container .post-card:hover {
+    transform: translateX(8px); /* Subtle slide right on hover */
+}
+
+/* 2. Link Styling inside Card */
+.profile-container .post-card a {
+    text-decoration: none;
+    display: block;
+}
+
+.profile-container .post-card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #432818;
+    margin: 0 0 12px 0;
+    line-height: 1.2;
+    transition: color 0.3s ease;
+}
+
+.profile-container .post-card h3:hover {
+    color: #bc6c25;
+}
+
+/* 3. Subheading Date - Extreme Right Alignment */
+.profile-container .post-card p {
+    display: flex;
+    justify-content: flex-end; /* Pushes date to the extreme right */
+    border-top: 2px solid #f1ece1; /* Line sits above the date now */
+    padding-top: 12px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #8d7b6d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Empty State & Error styling */
+.profile-container p:not(.post-card p) {
+    font-size: 18px;
+    color: #6b705c;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 20px 40px;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+}
+
+@media (max-width: 768px) {
+    .profile-container h2 { font-size: 30px; }
+    .profile-container .post-card { padding: 25px 30px; }
+}
